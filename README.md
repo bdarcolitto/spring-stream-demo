@@ -38,7 +38,7 @@ Agora você está com o Kafka local e com o tópico criado!
 
 ### Start da aplicação
 
-Basta usar `bootRun`, em java 11
+Basta usar `./gradlew bootRun`, em java 11
 
 #### Endpoint para teste
 
