@@ -1,0 +1,15 @@
+{
+	"type": "record",
+	"name": "CityKafkaModel",
+	"namespace": "com.example.demo.kafka.model",
+	"fields": [
+	{
+		"name": "id",
+		"type": "int"
+	},
+	{
+		"name": "name",
+		"type": "string"
+	}
+	]
+}
