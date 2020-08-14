@@ -10,23 +10,28 @@ spring:
       bindings:
 #        input:
         input-city-data:
-          destination: city-details
-          content-type: application/*+avro
+          destination: city-details-18
+          content-type: application/json
           group: group-1
 #          consumer:
 #            concurrency: 3
         output:
-          destination: city-details
-          content-type: application/*+avro
+          destination: city-details-18
+          partitioned: true
+          content-type: application/json
       kafka:
         binder:
           brokers: localhost:9092 # brokers do kakfa, separados por virgula
           producer-properties:
-            key.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
-            value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
-            schema.registry.url: http://localhost:8081
+#            key.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+#            value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+            key.serializer: com.example.demo.kafka.serdes.JsonKafkaSerializer
+            value.serializer: com.example.demo.kafka.serdes.JsonKafkaSerializer
+#            schema.registry.url: http://localhost:8081
           consumer-properties:
-            key.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
-            value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
-            schema.registry.url: http://localhost:8081
-            specific.avro.reader: true
+#            key.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+#            value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+            key.deserializer: com.example.demo.kafka.serdes.KeyKafkaDeserializer
+            value.deserializer: com.example.demo.kafka.serdes.ValueKafkaDeserializer
+#            schema.registry.url: http://localhost:8081
+#            specific.avro.reader: true
